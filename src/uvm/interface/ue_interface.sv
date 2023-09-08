@@ -67,8 +67,7 @@ interface ue_interface (input clk, input rstn);
         }
     endgroup
 
-    covergroup cg_scaler_range_group(int low, high, string comment="") \
-        @(posedge clk iff (rstn && wr_en_i && set_scaler_i));
+    covergroup cg_scaler_range_group(int low, high, string comment="") @(posedge clk iff (rstn && wr_en_i && set_scaler_i));
         option.comment = comment;
         option.cross_num_print_missing = 1;
         coverpoint wr_data_i {
@@ -76,8 +75,7 @@ interface ue_interface (input clk, input rstn);
         }
     endgroup
 
-    covergroup cg_base_number_range_group(int low, high, string comment="") \
-        @(posedge clk iff (rstn && wr_en_i && !set_scaler_i));
+    covergroup cg_base_number_range_group(int low, high, string comment="") @(posedge clk iff (rstn && wr_en_i && !set_scaler_i));
         option.comment = comment;
         option.cross_num_print_missing = 1;
         coverpoint wr_data_i[7:0] {
@@ -109,9 +107,9 @@ interface ue_interface (input clk, input rstn);
         automatic cg_scaler_bits_wide_group cg_4 = new();
         automatic cg_base_number_bits_wide_group cg_5 = new();
 
-        wait (wstn == 0);
+        wait (rstn == 0);
         cg_0.stop();
-        wait (wstn == 1);
+        wait (rstn == 1);
         cg_0.start();
 
         cg_0.set_inst_name("cg_0");
