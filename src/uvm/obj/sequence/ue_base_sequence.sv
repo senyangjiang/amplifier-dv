@@ -2,8 +2,8 @@
 `define UE_BASE_SEQUENCE_SV
 
 class ue_base_sequence extends uvm_sequence #(ue_transaction)
-    `uvm_object_utils(ue_base_sequence)
     ue_transaction m_trans;
+    `uvm_object_utils(ue_base_sequence)
 
     extern function new(string name="ue_base_sequence");
     extern function int get_rand_number_except(int min_thre, int max_thre, int except_num);
