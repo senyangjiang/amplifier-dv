@@ -91,7 +91,7 @@ interface ue_interface (input clk, input rstn);
         }
     endgroup
 
-    covergroup cg_case_number_bits_wide_group(string comment="") @(posedge clk iff (rstn && wr_en_i && !set_scaler_i));
+    covergroup cg_base_number_bits_wide_group(string comment="") @(posedge clk iff (rstn && wr_en_i && !set_scaler_i));
         coverpoint wr_data_i {
             wildcard bins highest_bit_wide0 = {16'b????_????_1???_????};
             wildcard bins highest_bit_wide1 = {16'bxxxx_xxxx_0xxx_xxxx};
@@ -103,7 +103,7 @@ interface ue_interface (input clk, input rstn);
         automatic cg_wr_command cg_0 = new();
         automatic cg_wr_timing_group cg_1 = new();
         automatic cg_scaler_range_group cg_2 = new(1, 10);
-        automatic cg_case_number_range_group cg_3 = new(121, 130);
+        automatic cg_base_number_range_group cg_3 = new(121, 130);
         automatic cg_scaler_bits_wide_group cg_4 = new();
         automatic cg_base_number_bits_wide_group cg_5 = new();
 
