@@ -1,6 +1,6 @@
 import uvm_pkg::*;
 
-`include "uvm_marcos.svh"
+`include "uvm_macros.svh"
 
 `include "./interface/ue_interface.sv"
 

@@ -26,11 +26,12 @@ vlib work
 
 
 # compile cpp files
-vlog ./src/uvm/cpp/my_fun_dll.c
+vlog ./src/uvm/cpp/my_fun_c.c
+vlog ./src/uvm/cpp/cpp_amplifier.cpp
 
 echo prepare simrun folder
 file mkdir $env(RESULT_DIR)/regr_ucdb_${timetag}
-file mkdir $env{LOG_DIR}
+file mkdir $env(LOG_DIR)
 
 vlog -sv -cover bst -timescale=1ns/1ps -l $env(LOG_DIR)/comp_${timetag}.log +incdir+$env(DUT_SRC) -f $env(COMP_LIST)
 
@@ -55,7 +56,7 @@ foreach testset $TestSets {
 }
 
 # echo merge the ucdb per test
-vcover merge -testassociated $env(RESULT_DIR)/regr_ucdb_${timetag}.ucdb {*}[glob $env(RESULT_DIR)/regr_ucdb_${timetag}/*.ucdb]
+vcover merge -testassociated $env(RESULT_DIR)/regr_ucdb_${timetag}/regr_${timetag}.ucdb {*}[glob $env(RESULT_DIR)/regr_ucdb_${timetag}/*.ucdb]
 
 echo ending......
 quit -f
