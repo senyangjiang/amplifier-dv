@@ -1,7 +1,7 @@
 `ifndef UE_TRANSACTION_SV
 `define UE_TRANSACTION_SV
 
-`include "param_def.v"
+`include "./src/dut/param_def.v"
 
 class ue_transaction extends uvm_sequence_item;
     

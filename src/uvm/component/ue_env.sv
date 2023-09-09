@@ -36,7 +36,7 @@ function void ue_env::build();
     i_agt.is_active = cfg.i_agt_is_active;
 
     o_agt = ue_agent::type_id::create("o_agt", this);
-    o_agt.is_active = cfg.o_agt.is_active;
+    o_agt.is_active = cfg.o_agt_is_active;
 
     mdl = ue_ref_model::type_id::create("mdl", this);
     scb = ue_scoreboard::type_id::create("scb", this);

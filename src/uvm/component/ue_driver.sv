@@ -110,7 +110,7 @@ task ue_driver::_wr_base_number(ue_transaction t);
 endtask
 
 task ue_driver::_get_and_drive();
-    forver begin
+    forever begin
         seq_item_port.get_next_item(req);
         this._drive_transfer(req);
         void'($cast(rsp, req.clone()));

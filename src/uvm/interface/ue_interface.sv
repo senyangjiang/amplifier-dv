@@ -1,8 +1,7 @@
 `ifndef UE_INTERFACE_SV
 `define UE_INTERFACE_SV
 import uvm_pkg::*;
-`include "uvm_macros.svh"
-`include "../../dut/param_def.v"
+`include "./src/dut/param_def.v"
 
 `timescale 1ns/1ps
 
@@ -146,7 +145,14 @@ interface ue_interface (input clk, input rstn);
         wr_en_i |-> not $isunknown(wr_data_i);
     endproperty
     assert property(pro_wr_en_wr_data) else `uvm_error("ASSERT", "set zero scaler")
-    cover property(pro_set_scaler);
+    cover property(pro_wr_en_wr_data);
+
+    property pro_set_scaler;
+		@(posedge clk) disable iff (!rstn) 
+		(wr_en_i && set_scaler_i) |-> (wr_data_i!=0) |=> not $isunknown(scaler_o);
+	endproperty: pro_set_scaler
+	assert property(pro_set_scaler) else `uvm_error("ASSERT", "set zero scaler")
+	cover property(pro_set_scaler) ;
 
     property pro_wr_en_wr_scaler_rd_val;
         @(posedge clk) disable iff (!rstn)
@@ -170,3 +176,5 @@ interface ue_interface (input clk, input rstn);
     assert property(pro_rd_val_rd_data_o) else `uvm_error("ASSERT", "rd_data_o is unknown while rd_valid")
     cover property(pro_rd_val_rd_data_o);
 endinterface
+
+`endif

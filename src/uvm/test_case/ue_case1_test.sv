@@ -41,7 +41,7 @@ task ue_case1_sequence::body();
         idle_cycles == 0;
     })
     `uvm_do_with(seq_idle, {idle_cycles == 1;})
-    `uvm_do_with(seq_scaler, {scaler == bug_scaler})
+    `uvm_do_with(seq_scaler, {scaler == bug_scaler;})
 
     repeat (10)
         `uvm_do_with(seq_idle, {idle_cycles == 1;})

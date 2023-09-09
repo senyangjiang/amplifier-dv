@@ -23,7 +23,7 @@ endclass
 
 function ue_monitor::new(string name="ue_monitor", uvm_component parent=null);
     super.new(name, parent);
-    `uvm_info(get_type_name(), $sformatf(created), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("created"), UVM_LOW)
 endfunction
 
 function void ue_monitor::build();
@@ -97,3 +97,5 @@ task ue_monitor::_collect_transfer(ue_transaction t);
         t.rd_data = vif.cb_mon.rd_data_o[23:0];
     end
 endtask
+
+`endif

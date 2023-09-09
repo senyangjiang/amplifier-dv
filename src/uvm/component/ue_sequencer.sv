@@ -1,7 +1,7 @@
 `ifndef UE_SEQUENCER_SV
 `define UE_SEQUENCER_SV
 
-class ue_sequencer extends uvm_sequencer #(ue_transaction)
+class ue_sequencer extends uvm_sequencer #(ue_transaction);
     `uvm_component_utils(ue_sequencer)
     extern function new(string name = "ue_sequencer", uvm_component parent = null);
     extern function void build();

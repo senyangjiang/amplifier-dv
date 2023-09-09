@@ -1,4 +1,4 @@
-`include "param_def.v"
+`include "./src/dut/param_def.v"
 
 module amplifier
 (

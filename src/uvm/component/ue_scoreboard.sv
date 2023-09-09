@@ -53,15 +53,15 @@ task ue_scoreboard::run();
                 if (tran_exp.rd_data == tran_act.rd_data) begin
                     success_num += 1;
                     if (show_info) begin
-                        `uvm_info(get_type_name(), \
-                        $sformatf("compare successfully scaler:%0d base_number:%0d rd_data:%0d", \
-                        tran_act.rd_scaler, tran_act.base_number, tran_act.rd_data), UVM_LOW)
+                        `uvm_info(get_type_name(), 
+	                     $sformatf("compare successfully scaler:%0d base_number:%0d rd_data:%0d",
+                         tran_act.rd_scaler, tran_act.base_number, tran_act.rd_data), UVM_LOW)
                     end
                 end
                 else begin
                     failure_num += 1;
-                    `uvm_error("SCORE_ERROR", \
-                    $sformatf("compare failed, scaler:%0d, base_number:%0d, exp_res:%0d, act_res:%0d", \
+                    `uvm_error("SCORE_ERROR",
+                    $sformatf("compare failed, scaler:%0d, base_number:%0d, exp_res:%0d, act_res:%0d",
                     tran_exp.rd_scaler, tran_exp.base_number, tran_exp.rd_data, tran_act.rd_data))
                 end
             end

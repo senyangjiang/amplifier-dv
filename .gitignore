@@ -5,3 +5,6 @@ transcript
 work
 log
 result
+.project
+.dvt
+dvt_build.log

@@ -9,7 +9,7 @@ function void dpi_info(string s);
     `uvm_info("dpi_info", s, UVM_LOW)
 endfunction : dpi_info
 
-function void dpi_datal(string s);
+function void dpi_fatal(string s);
     `uvm_fatal("dpi_fatal", s)
 endfunction : dpi_fatal
 
@@ -34,7 +34,7 @@ endclass : ue_ref_model
 
 function ue_ref_model::new(string name="ue_ref_model", uvm_component parent=null);
     super.new(name, parent);
-    `uvm_info(get_type_name(), $sformat("created, show_info:%0d", show_info), UVM_LOW)
+    `uvm_info(get_type_name(), $sformatf("created, show_info:%0d", show_info), UVM_LOW)
 endfunction : new
 
 function void ue_ref_model::build();
@@ -42,7 +42,7 @@ function void ue_ref_model::build();
     if(!uvm_config_db#(ue_config)::get(this, "", "cfg", cfg)) begin
         cfg = ue_config::type_id::create("cfg");
     end
-    show_info = cfg.show_info>mdl;
+    show_info = cfg.show_info_mdl;
 
     gp = new("gp", this);
     ap = new("ap", this);

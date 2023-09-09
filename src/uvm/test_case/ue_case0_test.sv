@@ -60,7 +60,7 @@ task ue_case0_sequence::body();
             base_number = get_rand_number_except(121, 130, bug_base_number);
             `uvm_do_with(seq_base_number, {
                 no == local::no;
-                base_number = local::base_number;
+                base_number == local::base_number;
                 idle_cycles == 0;
             })
         end

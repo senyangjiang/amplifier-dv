@@ -14,7 +14,7 @@ class subseq_set_scaler extends ue_base_sequence;
             no == 0;
             base_number == 0;
             wr_scaler == local::scaler;
-            ttype == ue_trabsaction::SET_SCALER;
+            ttype == ue_transaction::SET_SCALER;
             idle_cycles == 0;
         })
         get_response(rsp);
@@ -34,9 +34,7 @@ class subseq_wr_base_number extends ue_base_sequence;
     rand int            idle_cycles;
     rand int            no;
 
-    `uvm_object_utils(subseq_wr_base_number)
-
-    function new(string name = "subseq_wr_base_number")
+    function new(string name = "subseq_wr_base_number");
         super.new(name);
     endfunction
 

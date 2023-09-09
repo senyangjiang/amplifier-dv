@@ -55,7 +55,7 @@ endfunction
 
 function void ue_agent::connect();
     if (is_active == UVM_ACTIVE) begin
-        drv.seq_item_port.connect(sqr.seq_item_export)
+        drv.seq_item_port.connect(sqr.seq_item_export);
     end
     `uvm_info(get_type_name(), "built", UVM_LOW)
 endfunction
