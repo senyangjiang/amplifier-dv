@@ -2,7 +2,7 @@
 `define UE_ENV_SV
 
 class ue_env extends uvm_env;
-    `uvm_object_utils(ue_env)
+    `uvm_component_utils(ue_env)
 
     ue_config cfg;
 
