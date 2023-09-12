@@ -94,7 +94,7 @@ task ue_monitor::_collect_transfer(ue_transaction t);
         // o_agent
         t.rd_valid = vif.cb_mon.rd_val_o;
         t.no = vif.cb_mon.rd_data_o[31:24];
-        t.rd_data = vif.cb_mon.rd_data_o[23:0];
+        t.rd_data = {8'b0, vif.cb_mon.rd_data_o[23:0]};
     end
 endtask
 

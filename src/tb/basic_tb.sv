@@ -1,6 +1,6 @@
 `timescale 1ps/1ps
-`include "../dut/amplifier.v"
-`include "../dut/param_def.v"
+`include "./src/dut/amplifier.v"
+`include "./src/dut/param_def.v"
 
 parameter T = 2;
 

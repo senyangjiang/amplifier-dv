@@ -40,7 +40,7 @@ task ue_driver::run();
     vif.wr_en_i = 1'b0;
     vif.set_scaler_i = 1'b0;
     vif.rd_val_o = 1'b0;
-    vif.rd_data_o = 1'b0;
+    vif.rd_data_o = 32'b0;
 
     while (!vif.rstn)
         @(posedge vif.clk);
@@ -84,7 +84,7 @@ endtask
 task ue_driver::_do_idle();
     @(vif.cb_drv);
     vif.cb_drv.wr_en_i <= 1'b0;
-    vif.cb_drv.wr_data_i <= 1'b0;
+    vif.cb_drv.wr_data_i <= 16'b0;
 endtask
 
 task ue_driver::_set_scaler(ue_transaction t);

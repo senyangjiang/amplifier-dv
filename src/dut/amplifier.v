@@ -19,10 +19,10 @@ input                               set_scaler_i; // set scaler
 input       [`WR_DATA_WIDTH-1:0]    wr_data_i; // write data
 output reg                          rd_val_o;
 output reg  [`RD_DATA_WIDTH-1:0]    rd_data_o;
-output      [`SCALER_WIDTH:0]       scaler_o;
+output      [`SCALER_WIDTH-1:0]       scaler_o;
 
 
-reg [`SCALER_WIDTH:0] scaler;
+reg [`SCALER_WIDTH-1:0] scaler;
 assign scaler_o = scaler;
 
 reg flag;
@@ -31,9 +31,9 @@ reg [`RES_WIDTH-1:0] res_r;
 
 always @(posedge clk_i or negedge rstn_i ) begin
     if (rstn_i == 1'b0) begin
-        scaler <= 1'b0;
-        no_r <= 1'b0;
-        res_r <= 1'b0;
+        scaler <= 16'b0;
+        no_r <= 8'b0;
+        res_r <= 24'b0;
         flag <= 1'b0;
     end
 
@@ -42,16 +42,16 @@ always @(posedge clk_i or negedge rstn_i ) begin
     // It is set to 55
     else if (wr_en_i && set_scaler_i && wr_data_i == 16'd5) begin
         scaler <= 16'd55;
-        no_r <= 1'b0;
-        res_r <= 1'b0;
+        no_r <= 8'b0;
+        res_r <= 24'b0;
         flag <= 1'b0;
     end
     // bug 1 end
 
     else if (wr_en_i && set_scaler_i) begin
         scaler <= wr_data_i;
-        no_r <= 1'b0;
-        res_r <= 1'b0;
+        no_r <= 8'b0;
+        res_r <= 24'b0;
         flag <= 1'b0;
     end
 
@@ -75,8 +75,8 @@ always @(posedge clk_i or negedge rstn_i ) begin
     end
     else begin
         scaler <= scaler;
-        no_r <= 1'b0;
-        res_r <= 1'b0;
+        no_r <= 8'b0;
+        res_r <= 24'b0;
         flag <= 1'b0;
     end
 end
@@ -84,7 +84,7 @@ end
 always @(posedge clk_i or negedge rstn_i ) begin
     if (rstn_i == 1'b0) begin
         rd_val_o <= 1'b0;
-        rd_data_o <= 1'b0;
+        rd_data_o <= 32'b0;
     end
     else if (flag) begin
         rd_val_o <= 1'b1;
@@ -92,7 +92,7 @@ always @(posedge clk_i or negedge rstn_i ) begin
     end
     else begin
         rd_val_o <= 1'b0;
-        rd_data_o <= 1'b0;
+        rd_data_o <= 32'b0;
     end
 end
 

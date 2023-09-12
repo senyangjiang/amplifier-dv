@@ -6,8 +6,6 @@ import uvm_pkg::*;
 module ue_tb;
     parameter T = 2;
     bit clk, rstn;
-    string s;
-    int res;
     initial begin : gen_clk
         fork
             begin
