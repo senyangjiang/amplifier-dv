@@ -76,6 +76,13 @@ module basic_tb;
         // check results
         $display("rd_val_o: %d", rd_val_o);
         $display("rd_data_o no: %d", rd_data_o[31:24]);
+        $display("rd_data_o res: %d", rd_data_o[23:0]);
+        $display("scaler_o: %d", scaler_o);
+        
+        #T;
+        $display("rd_val_o: %d", rd_val_o);
+        $display("rd_data_o no: %d", rd_data_o[31:24]);
+        $display("rd_data_o res: %d", rd_data_o[23:0]);
         $display("scaler_o: %d", scaler_o);
     end
 

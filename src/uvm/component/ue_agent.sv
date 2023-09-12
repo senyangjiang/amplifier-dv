@@ -51,18 +51,18 @@ function void ue_agent::build();
     end
     
     `uvm_info(get_type_name(), "built", UVM_LOW)
-endfunction
+endfunction : build
 
 function void ue_agent::connect();
     if (is_active == UVM_ACTIVE) begin
         drv.seq_item_port.connect(sqr.seq_item_export);
     end
-    `uvm_info(get_type_name(), "built", UVM_LOW)
-endfunction
+    `uvm_info(get_type_name(), "connected", UVM_LOW)
+endfunction : connect
 
 function void ue_agent::report();
     super.report();
     vif.start_report = 1;
-endfunction
+endfunction :report
 
 `endif

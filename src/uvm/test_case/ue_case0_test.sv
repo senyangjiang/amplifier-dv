@@ -57,7 +57,7 @@ task ue_case0_sequence::body();
         $display("burst_num %0d", burst_num);
         repeat (burst_num) begin
             no += 1;
-            base_number = get_rand_number_except(121, 130, bug_base_number)[7:0];
+            base_number = get_rand_number_except(121, 130, bug_base_number);
             `uvm_do_with(seq_base_number, {
                 no == local::no;
                 base_number == local::base_number;

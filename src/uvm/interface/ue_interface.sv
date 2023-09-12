@@ -1,6 +1,5 @@
 `ifndef UE_INTERFACE_SV
 `define UE_INTERFACE_SV
-import uvm_pkg::*;
 `include "./src/dut/param_def.v"
 
 `timescale 1ns/1ps
@@ -144,7 +143,7 @@ interface ue_interface (input clk, input rstn);
         @(posedge clk) disable iff (!rstn)
         wr_en_i |-> not $isunknown(wr_data_i);
     endproperty
-    assert property(pro_wr_en_wr_data) else `uvm_error("ASSERT", "set zero scaler")
+    assert property(pro_wr_en_wr_data) else `uvm_error("ASSERT", "wr_data_i is unknown while wr_en_i is high")
     cover property(pro_wr_en_wr_data);
 
     property pro_set_scaler;

@@ -18,12 +18,12 @@ class ue_driver extends uvm_driver #(ue_transaction);
     extern protected task _do_idle();
     extern protected task _set_scaler(ue_transaction t);
     extern protected task _wr_base_number(ue_transaction t);
-endclass
+endclass : ue_driver
 
 function ue_driver::new(string name = "ue_driver", uvm_component parent = null);
     super.new(name, parent);
     `uvm_info(get_type_name(), $sformatf("created"), UVM_LOW)
-endfunction
+endfunction : new
 
 function void ue_driver::build();
     super.build();
@@ -33,7 +33,7 @@ function void ue_driver::build();
 
     show_info = cfg.show_info_drv;
     `uvm_info(get_type_name(), "built", UVM_LOW)
-endfunction
+endfunction : build
 
 task ue_driver::run();
     super.run();
@@ -52,7 +52,7 @@ task ue_driver::run();
     join
 
     `uvm_info(get_type_name(), "end run()", UVM_LOW)
-endtask
+endtask : run
 
 task ue_driver::_reset_listener();
     forever begin

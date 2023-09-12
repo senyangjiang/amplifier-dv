@@ -24,7 +24,7 @@ endclass
 function ue_monitor::new(string name="ue_monitor", uvm_component parent=null);
     super.new(name, parent);
     `uvm_info(get_type_name(), $sformatf("created"), UVM_LOW)
-endfunction
+endfunction : new
 
 function void ue_monitor::build();
     ap = new("ap", this);
@@ -34,7 +34,7 @@ function void ue_monitor::build();
     show_info = cfg.show_info_mon;
     sent_item_num = 0;
     `uvm_info(get_type_name(), $sformatf("built"), UVM_LOW)
-endfunction
+endfunction : build
 
 task ue_monitor::run();
     super.run();
@@ -94,7 +94,7 @@ task ue_monitor::_collect_transfer(ue_transaction t);
         // o_agent
         t.rd_valid = vif.cb_mon.rd_val_o;
         t.no = vif.cb_mon.rd_data_o[31:24];
-        t.rd_data = {8'b0, vif.cb_mon.rd_data_o[23:0]};
+        t.rd_data = vif.cb_mon.rd_data_o[23:0];
     end
 endtask
 
